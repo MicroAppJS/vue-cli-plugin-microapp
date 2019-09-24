@@ -4,12 +4,16 @@ const path = require('path');
 
 module.exports = function VueCLIAdapter(api, opts = {}) {
 
+    // api.assertVersion('>=0.1.4');
+
     // commands
     require('./commands/version')(api);
 
     // Current working directory.
     api.extendMethod('getCwd', () => {
         return opts.root || api.root;
+    }, {
+        description: 'Current working directory.',
     });
 
     /**
@@ -21,18 +25,8 @@ module.exports = function VueCLIAdapter(api, opts = {}) {
     api.extendMethod('resolve', _path => {
         const context = api.getCwd();
         return path.resolve(context, _path);
-    });
-
-    api.extendMethod('assertVersion', range => {
-        api.logger.warn(`assertVersion(${range}); 方法未真实实现 !`);
-        return true;
-    });
-
-    api.extendMethod('genCacheConfig', () => {
-        api.logger.warn('genCacheConfig(); 方法未真实实现 !');
-        const cacheDirectory = '';
-        const cacheIdentifier = '';
-        return { cacheDirectory, cacheIdentifier };
+    }, {
+        description: 'Resolve path for a project.',
     });
 
     api.registerMethod('chainWebpack', {
@@ -48,11 +42,19 @@ module.exports = function VueCLIAdapter(api, opts = {}) {
         description: '适配 vue-cli 中 configureDevServer 事件',
     });
 
-    api.onChainWebpcakConfig(config => {
+    api.modifyChainWebpcakConfig(config => {
         api.applyPluginHooks('chainWebpack', config);
+        return config;
     });
 
     api.modifyWebpcakConfig(config => {
         return api.applyPluginHooks('configureWebpack', config);
     });
+
+    const buildInPlugins = require('./buildInPlugins.js');
+    buildInPlugins(api, opts);
+};
+
+module.exports.configuration = {
+    description: '针对 Vue Cli 适配器',
 };

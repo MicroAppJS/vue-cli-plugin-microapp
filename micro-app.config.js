@@ -4,12 +4,9 @@ module.exports = {
     name: '@micro-app/demo',
     description: '',
     version: '0.0.1',
-    type: '', // types 类型
-    webpack: { // webpack 配置 (只有自己使用)
-        // output: {
-        //     path: path.resolve(__dirname, 'public'),
-        //     publicPath: '/public/',
-        // },
+
+    entry: {
+        main: [ './test/main.js' ],
     },
 
     // staticPath: '',
@@ -37,29 +34,14 @@ module.exports = {
     server: {
         entry: '', // 服务端入口
         port: 8088, // 服务端口号
-        contentBase: 'public', // 静态文件地址
         options: {
             // 服务端回调参数
         },
     },
 
     plugins: [
-        [{
-            id: 'test',
-            description: '这是test',
-            link: __dirname + '/test/testPlugin',
-        }, {
-            a: 1,
-        }],
+        '@micro-app/plugin-webpack-adapter',
+        // '@micro-app/plugin-vue-cli',
     ],
 
-    // deploy: {
-    //     git: 'git+ssh://git@xxxxx.git',
-    //     branch: 'test',
-    //     // branch: {
-    //     //     name: 'develop',
-    //     //     extends: true,
-    //     // },
-    //     message: '', // 提交 message 中增加内容
-    // },
 };

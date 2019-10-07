@@ -6,7 +6,9 @@ const fs = require('fs');
 module.exports = function Methods(api, projectOptions) {
 
     // 针对 vue plugin 的注册
-    api.extendMethod('registerVuePlugin', options => {
+    api.extendMethod('registerVuePlugin', {
+        description: '针对 vue-cli plugin 的注册方法.',
+    }, options => {
         const { id, opts = {}, link, apply } = options;
         assert(id, 'id must supplied');
         assert(typeof id === 'string', 'id must be string');
@@ -25,11 +27,11 @@ module.exports = function Methods(api, projectOptions) {
             id: `vue-service:plugins-${id}`,
             opts: Object.assign({}, projectOptions, opts), // vue.config.js
         });
-    }, {
-        description: '针对 vue-cli plugin 的注册方法.',
     });
 
-    api.extendMethod('registerVueCommand', (name, opts, fn) => {
+    api.extendMethod('registerVueCommand', {
+        description: '针对 vue-cli command 的注册方法.',
+    }, (name, opts, fn) => {
         assert(name, 'name must supplied');
         assert(typeof name === 'string', 'name must be string');
         switch (name) {
@@ -80,8 +82,6 @@ module.exports = function Methods(api, projectOptions) {
                 break;
         }
         api.registerCommand(`vue-service-${name}`, opts, fn);
-    }, {
-        description: '针对 vue-cli command 的注册方法.',
     });
 
 };

@@ -21,7 +21,9 @@ module.exports = function(api, opts = {}) {
     /**
      * Generate a cache identifier from a number of variables
      */
-    api.extendMethod('genCacheConfig', (id, partialIdentifier, configFiles = []) => {
+    api.extendMethod('genCacheConfig', {
+        description: 'Generate a cache identifier from a number of variables',
+    }, (id, partialIdentifier, configFiles = []) => {
         const fs = require('fs');
         const cacheDirectory = api.resolve(`node_modules/.cache/${id}`);
 
@@ -83,8 +85,6 @@ module.exports = function(api, opts = {}) {
         const hash = require('hash-sum');
         const cacheIdentifier = hash(variables);
         return { cacheDirectory, cacheIdentifier };
-    }, {
-        description: 'Generate a cache identifier from a number of variables',
     });
 
     require('./methods.js')(api, projectOptions);

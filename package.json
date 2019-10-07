@@ -33,15 +33,15 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/cli": ">=0.1.4",
-        "@micro-app/core": ">=0.1.4",
-        "@micro-app/plugin-webpack-adapter": ">=0.0.4",
+        "@micro-app/cli": ">=0.1.6",
+        "@micro-app/core": ">=0.1.7",
+        "@micro-app/plugin-webpack-adapter": ">=0.0.5",
         "vue-template-compiler": "^2.0.0"
     },
     "devDependencies": {
-        "@micro-app/cli": "^0.1.4-beta.1",
-        "@micro-app/core": "^0.1.4-beta.1",
-        "@micro-app/plugin-webpack-adapter": "^0.0.3",
+        "@micro-app/cli": "^0.1.6",
+        "@micro-app/core": "^0.1.7",
+        "@micro-app/plugin-webpack-adapter": "^0.0.5",
         "@types/jest": "^24.0.18",
         "babel-eslint": "^10.0.3",
         "coveralls": "^3.0.6",

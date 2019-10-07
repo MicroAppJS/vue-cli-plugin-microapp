@@ -10,10 +10,10 @@ module.exports = function VueCLIAdapter(api, opts = {}) {
     require('./commands/version')(api);
 
     // Current working directory.
-    api.extendMethod('getCwd', () => {
-        return opts.root || api.root;
-    }, {
+    api.extendMethod('getCwd', {
         description: 'Current working directory.',
+    }, () => {
+        return opts.root || api.root;
     });
 
     /**
@@ -22,11 +22,11 @@ module.exports = function VueCLIAdapter(api, opts = {}) {
      * @param {string} _path - Relative path from project root
      * @return {string} The resolved absolute path.
      */
-    api.extendMethod('resolve', _path => {
+    api.extendMethod('resolve', {
+        description: 'Resolve path for a project.',
+    }, _path => {
         const context = api.getCwd();
         return path.resolve(context, _path);
-    }, {
-        description: 'Resolve path for a project.',
     });
 
     api.registerMethod('chainWebpack', {

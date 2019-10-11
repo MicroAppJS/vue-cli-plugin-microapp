@@ -9,14 +9,6 @@ module.exports = {
         main: [ './test/main.js' ],
     },
 
-    // staticPath: '',
-
-    // dlls: [
-    //     {
-    //         context: __dirname,
-    //     },
-    // ],
-
     alias: { // 前端
         api: 'abc',
         config: {
@@ -39,9 +31,9 @@ module.exports = {
         },
     },
 
-    plugins: [
-        '@micro-app/plugin-webpack-adapter',
-        // '@micro-app/plugin-vue-cli',
-    ],
+    // plugins: [
+    // '@micro-app/plugin-webpack-adapter',
+    // '@micro-app/plugin-vue-cli',
+    // ],
 
 };

@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = function VueCLIAdapter(api, opts = {}) {
 
-    // api.assertVersion('>=0.1.4');
+    api.assertVersion('>=0.2.0');
 
     // commands
     require('./commands/version')(api);

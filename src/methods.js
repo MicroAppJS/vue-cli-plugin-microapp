@@ -9,7 +9,7 @@ module.exports = function Methods(api, projectOptions) {
     // 针对 vue plugin 的注册
     api.extendMethod('registerVuePlugin', {
         description: '针对 vue-cli plugin 的注册方法.',
-    }, options => {
+    }, function(options) {
         const { id, opts = {}, link, apply } = options;
         assert(id, 'id must supplied');
         assert(typeof id === 'string', 'id must be string');
@@ -32,19 +32,19 @@ module.exports = function Methods(api, projectOptions) {
 
     api.extendMethod('registerVueCommand', {
         description: '针对 vue-cli command 的注册方法.',
-    }, (name, opts, fn) => {
+    }, function(name, opts, fn) {
         assert(name, 'name must supplied');
         assert(typeof name === 'string', 'name must be string');
+        let tempFn = fn;
         switch (name) {
             case 'serve': {
-                const tempFn = fn;
-                fn = async function(args) {
+                tempFn = async function(args) {
                     // beforeDevServer
                     api.applyPluginHooks('beforeDevServer', { args });
 
-                    if (tempFn) {
+                    if (fn) {
                         try {
-                            await tempFn(args);
+                            await fn.call(this, args);
                         } catch (err) {
                             api.logger.error(err);
                             api.applyPluginHooks('afterDevServer', { args, err });
@@ -58,14 +58,13 @@ module.exports = function Methods(api, projectOptions) {
                 break;
             }
             case 'build': {
-                const tempFn = fn;
-                fn = async function(args) {
+                tempFn = async function(args) {
                     // beforeBuild
                     api.applyPluginHooks('beforeBuild', { args });
 
-                    if (tempFn) {
+                    if (fn) {
                         try {
-                            await tempFn(args);
+                            await fn.call(this, args);
                             api.applyPluginHooks('onBuildSuccess', { args });
                         } catch (err) {
                             api.logger.error(err);
@@ -82,7 +81,7 @@ module.exports = function Methods(api, projectOptions) {
             default:
                 break;
         }
-        api.registerCommand(`vue-service-${name}`, opts, fn);
+        api.registerCommand(`vue-service-${name}`, opts, tempFn);
     });
 
 };

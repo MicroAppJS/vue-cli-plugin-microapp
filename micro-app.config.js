@@ -31,9 +31,12 @@ module.exports = {
         },
     },
 
-    // plugins: [
-    // '@micro-app/plugin-webpack-adapter',
-    // '@micro-app/plugin-vue-cli',
-    // ],
+    plugins: [
+        '@micro-app/plugin-webpack-adapter',
+        [{
+            id: 'plugin-vue-cli',
+            link: __dirname + '/src/index.js',
+        }],
+    ],
 
 };

@@ -9,14 +9,13 @@ module.exports = function ConfigPlugins(api, vueRoot, projectOptions) {
         'css',
         'prod',
         'app',
-    ]
-        .forEach(name => {
+    ].forEach(name => {
         // register
-            api.registerVuePlugin({
-                id: `vue-service:plugins-config-${name}`,
-                link: path.resolve(vueRoot, 'config', name),
-                description: `[vue-service] config - ${name}`,
-            });
+        api.registerVuePlugin({
+            id: `vue-service:plugins-config-${name}`,
+            link: path.resolve(vueRoot, 'config', name),
+            description: `[vue-service] config - ${name}`,
         });
+    });
 
 };

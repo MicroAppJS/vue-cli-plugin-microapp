@@ -6,7 +6,7 @@ const path = require('path');
 
 describe('Plugin VueCLIAdapter', () => {
 
-    it('VueCLIAdapter', () => {
+    it('VueCLIAdapter', async () => {
         const { service } = require('@micro-app/cli/bin/base');
         // service.registerPlugin({
         //     id: '@micro-app/plugin-webpack-adapter',
@@ -16,10 +16,10 @@ describe('Plugin VueCLIAdapter', () => {
         //     link: path.join(__dirname, './index.js'),
         // });
 
-        service.run('help', { _: [] });
+        await service.run('help', { _: [] });
     });
 
-    it('resolveWebpackConfig', () => {
+    it('resolveWebpackConfig', async () => {
         const { service } = require('@micro-app/cli/bin/base');
         // service.registerPlugin({
         //     id: '@micro-app/plugin-webpack-adapter',
@@ -39,10 +39,10 @@ describe('Plugin VueCLIAdapter', () => {
             },
         });
 
-        service.run('help', { _: [] });
+        await service.run('help', { _: [] });
     });
 
-    it('vue:serve', () => {
+    it('vue:serve', async () => {
         const { service } = require('@micro-app/cli/bin/base');
         // service.registerPlugin({
         //     id: '@micro-app/plugin-webpack-adapter',
@@ -53,10 +53,10 @@ describe('Plugin VueCLIAdapter', () => {
         // });
 
         // service.run('vue-service-serve', { _: [] });
-        service.run('help', { _: [ 'vue-service-serve' ] });
+        await service.run('help', { _: [ 'vue-service-serve' ] });
     });
 
-    it('vue:build', () => {
+    it('vue:build', async () => {
         const { service } = require('@micro-app/cli/bin/base');
         // service.registerPlugin({
         //     id: '@micro-app/plugin-webpack-adapter',
@@ -67,10 +67,10 @@ describe('Plugin VueCLIAdapter', () => {
         // });
 
         // service.run('vue-service-build', { _: [] });
-        service.run('help', { _: [ 'vue-service-build' ] });
+        await service.run('help', { _: [ 'vue-service-build' ] });
     });
 
-    it('vue:inspect', () => {
+    it('vue:inspect', async () => {
         const { service } = require('@micro-app/cli/bin/base');
         // service.registerPlugin({
         //     id: '@micro-app/plugin-webpack-adapter',
@@ -80,7 +80,7 @@ describe('Plugin VueCLIAdapter', () => {
         //     link: path.join(__dirname, './index.js'),
         // });
 
-        service.run('vue-service-inspect', { _: [] });
+        await service.run('vue-service-inspect', { _: [] });
     });
 
 });

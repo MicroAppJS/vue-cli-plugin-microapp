@@ -1,6 +1,6 @@
 'use strict';
 
-const virtualFile = require('@micro-app/core').virtualFile;
+const { virtualFile } = require('@micro-app/shared-utils');
 
 // 重新适配文件
 module.exports = function fixedPluginFile(id, link) {
@@ -24,7 +24,7 @@ module.exports = function fixedPluginFile(id, link) {
             ].join('\n'))
         ;
 
-        if (id === 'vue-service:plugins-command-serve') {
+        if (id === 'vue-service:plugin-command-serve') {
         // 注入事件
             newJsText = newJsText
                 .replace('api.service.devServerConfigFns.forEach(fn => fn(app, server))', [

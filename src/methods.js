@@ -25,7 +25,7 @@ module.exports = function Methods(api, projectOptions) {
         }
         api.registerPlugin({
             ...options,
-            id: `vue-service:plugins-${id}`,
+            id: `vue-service:plugin-${id}`,
             opts: Object.assign({}, projectOptions, opts), // vue.config.js
         });
     });

@@ -23,7 +23,7 @@ module.exports = function ProjectPlugins(api, vueRoot, projectOptions) {
 
     // apply webpack configs from project config file
     api.registerVuePlugin({
-        id: 'vue-service:plugins-config-projectOptions',
+        id: 'vue-service:plugin-config-projectOptions',
         apply(api) {
             if (projectOptions.chainWebpack && _.isFunction(projectOptions.chainWebpack)) {
                 api.chainWebpack(projectOptions.chainWebpack);

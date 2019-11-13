@@ -7,9 +7,9 @@ describe('Plugin VueCLI bin', () => {
     it('vue:serve run', async () => {
         const shelljs = require('shelljs');
 
-        const { code, stderr } = shelljs.exec('node bin/micro-app-vue.js serve', {
+        const { code, stderr } = shelljs.exec('node bin/micro-app-vue serve', {
             cwd: process.cwd(),
-            timeout: 3000,
+            timeout: 5000,
         });
 
         if (code && stderr) {
@@ -20,9 +20,9 @@ describe('Plugin VueCLI bin', () => {
     it('vue:build run', () => {
         const shelljs = require('shelljs');
 
-        const { code, stderr } = shelljs.exec('node bin/micro-app-vue.js build', {
+        const { code, stderr } = shelljs.exec('node bin/micro-app-vue build', {
             cwd: process.cwd(),
-            timeout: 3000,
+            timeout: 5000,
         });
 
         if (code && stderr) {

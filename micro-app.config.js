@@ -34,7 +34,7 @@ module.exports = {
     plugins: [
         '@micro-app/plugin-webpack-adapter',
         [{
-            id: 'plugin-vue-cli',
+            id: 'test:plugin-vue-cli',
             link: __dirname + '/src/index.js',
         }],
     ],

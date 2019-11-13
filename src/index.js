@@ -47,7 +47,7 @@ module.exports = function VueCLIAdapter(api, opts = {}) {
         return config;
     });
 
-    api.modifyWebpcakConfig(config => {
+    api.modifyWebpackConfig(config => {
         return api.applyPluginHooks('configureWebpack', config);
     });
 

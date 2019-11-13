@@ -12,7 +12,7 @@ module.exports = function ConfigPlugins(api, vueRoot, projectOptions) {
     ].forEach(name => {
         // register
         api.registerVuePlugin({
-            id: `vue-service:plugins-config-${name}`,
+            id: `vue-service:plugin-config-${name}`,
             link: path.resolve(vueRoot, 'config', name),
             description: `[vue-service] config - ${name}`,
         });

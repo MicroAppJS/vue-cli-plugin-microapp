@@ -42,7 +42,7 @@ module.exports = function VueCLIAdapter(api, opts = {}) {
         description: '适配 vue-cli 中 configureDevServer 事件',
     });
 
-    api.modifyChainWebpcakConfig(config => {
+    api.modifyChainWebpackConfig(config => {
         api.applyPluginHooks('chainWebpack', config);
         return config;
     });

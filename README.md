@@ -1,8 +1,8 @@
-# Micro APP Plugin - Vue CLI
+# Vue CLI Plugin - Micro APP
 
-[Plugin] adapter vue cli plugin.
+[Plugin] Vue CLI Plugin for MicroApp Projects.
 
-基于webpack多入口的多仓库业务模块开发的插件应用框架核心库.
+基于 Vue CLI 插件，用于适配 MicroApp 部分功能.
 
 [![Coverage Status][Coverage-img]][Coverage-url]
 [![CircleCI][CircleCI-img]][CircleCI-url]

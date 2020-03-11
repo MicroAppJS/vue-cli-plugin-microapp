@@ -1,31 +1,36 @@
 {
-    "name": "@micro-app/plugin-vue-cli",
-    "version": "0.0.4",
-    "description": "[Plugin] adapter vue cli plugin.",
+    "name": "@micro-app/vue-cli-plugin-microapp",
+    "version": "0.0.1",
+    "description": "[Plugin] Vue CLI Plugin for MicroApp Projects.",
     "main": "src/index.js",
-    "bin": {
-        "micro-app-vue": "bin/micro-app-vue"
-    },
     "scripts": {
-        "test": "jest"
+        "prepublishOnly": "npm run test",
+        "test": "jest",
+        "release": "micro-app release",
+        "release:alpha": "npm run release -- --preRelease=alpha",
+        "release:next": "npm run release -- --preRelease=next",
+        "release:minor": "npm run release minor",
+        "release:patch": "npm run release patch"
     },
     "files": [
-        "src",
-        "bin"
+        "src"
     ],
-    "homepage": "https://github.com/MicroAppJS/MicroApp-Plugin-Vue-CLI",
+    "homepage": "https://github.com/MicroAppJS/vue-cli-plugin-microapp",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MicroAppJS/MicroApp-Plugin-Vue-CLI.git"
+        "url": "git+https://github.com/MicroAppJS/vue-cli-plugin-microapp.git"
     },
     "bugs": {
-        "url": "https://github.com/MicroAppJS/MicroApp-Plugin-Vue-CLI/issues"
+        "url": "https://github.com/MicroAppJS/vue-cli-plugin-microapp/issues"
     },
     "keywords": [
+        "vue",
+        "cli",
         "micro",
         "micro-app",
         "plugin",
-        "vue-cli"
+        "vue-cli",
+        "microapp"
     ],
     "author": {
         "name": "Zyao89",
@@ -33,24 +38,17 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/cli": ">=0.2.0",
-        "@micro-app/core": ">=0.2.0",
-        "@micro-app/plugin-webpack-adapter": ">=0.1.0",
-        "vue-template-compiler": "^2.0.0"
+        "@micro-app/cli": ">=0.3.4",
+        "@micro-app/plugin-webpack": ">=0.0.6"
     },
     "devDependencies": {
-        "@micro-app/cli": "^0.2.0-beta.4",
-        "@micro-app/core": "^0.2.0-beta.6",
-        "@micro-app/plugin-webpack-adapter": "^0.1.0-beta.4",
-        "@types/jest": "^24.0.18",
-        "babel-eslint": "^10.0.3",
-        "coveralls": "^3.0.7",
-        "eslint": "^5.16.0",
-        "eslint-config-2o3t": "^1.1.17",
-        "jest": "^24.9.0",
-        "vue-template-compiler": "^2.0.0"
+        "@micro-app/plugin-deploy": "^0.0.5",
+        "@types/jest": "^24.9.1",
+        "eslint-config-2o3t": "^2.0.1",
+        "jest": "^24.9.0"
     },
     "dependencies": {
-        "@vue/cli-service": "^4.0.3"
+        "@micro-app/cli": "^0.3.4",
+        "@micro-app/plugin-webpack": "^0.0.6"
     }
 }

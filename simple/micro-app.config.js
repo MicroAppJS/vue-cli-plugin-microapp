@@ -1,13 +1,28 @@
 'use strict';
 
+const path = require('path');
+const ROOT = __dirname;
+
 module.exports = {
     name: '@micro-app/demo',
     description: '',
     version: '0.0.1',
+    type: '', // types 类型
 
     entry: {
-        main: [ './test/main.js' ],
+        main: './src/main.js',
     },
+
+    htmls: [
+        {
+            filename: 'index.html',
+            hash: true,
+            chunks: [ 'chunk-vendors', 'chunk-common', 'main' ],
+            template: './src/index.html',
+        },
+    ],
+
+    outputDir: path.resolve(ROOT, 'dist'),
 
     alias: { // 前端
         api: 'abc',
@@ -30,13 +45,4 @@ module.exports = {
             // 服务端回调参数
         },
     },
-
-    plugins: [
-        '@micro-app/plugin-webpack-adapter',
-        [{
-            id: 'test:plugin-vue-cli',
-            link: __dirname + '/src/index.js',
-        }],
-    ],
-
 };

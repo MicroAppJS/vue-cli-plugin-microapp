@@ -1,60 +1,27 @@
 'use strict';
 
-const path = require('path');
+const chainConfig = require('./service/chainConfig');
 
-module.exports = function VueCLIAdapter(api, opts = {}) {
+module.exports = function(api, vueConfig) {
 
-    api.assertVersion('>=0.2.0');
+    const { service } = require('@micro-app/cli');
 
-    // commands
-    require('./commands/version')(api);
+    const builtIn = Symbol.for('built-in');
 
-    // Current working directory.
-    api.extendMethod('getCwd', {
-        description: 'Current working directory.',
-    }, () => {
-        return opts.root || api.root;
+    // 注册 webapck 插件
+    service.registerPlugin({
+        id: '@micro-app/plugin-webpack',
+        [builtIn]: true,
     });
 
-    /**
-     * Resolve path for a project.
-     *
-     * @param {string} _path - Relative path from project root
-     * @return {string} The resolved absolute path.
-     */
-    api.extendMethod('resolve', {
-        description: 'Resolve path for a project.',
-    }, _path => {
-        const context = api.getCwd();
-        return path.resolve(context, _path);
+    // 注册插件
+    service.registerPlugin({
+        id: 'vue-cli:plugin-command-return-config',
+        link: require.resolve('./plugins/return.js'),
+        [builtIn]: true,
     });
 
-    api.registerMethod('chainWebpack', {
-        type: api.API_TYPE.EVENT,
-        description: '适配 vue-cli 中 chainWebpack 事件',
-    });
-    api.registerMethod('configureWebpack', {
-        type: api.API_TYPE.MODIFY,
-        description: '适配 vue-cli 中 configureWebpack 事件, 需要返回值',
-    });
-    api.registerMethod('configureDevServer', {
-        type: api.API_TYPE.EVENT,
-        description: '适配 vue-cli 中 configureDevServer 事件',
-    });
+    const config = service.runSync('return-config');
 
-    api.modifyChainWebpackConfig(config => {
-        api.applyPluginHooks('chainWebpack', config);
-        return config;
-    });
-
-    api.modifyWebpackConfig(config => {
-        return api.applyPluginHooks('configureWebpack', config);
-    });
-
-    const buildInPlugins = require('./buildInPlugins.js');
-    buildInPlugins(api, opts);
-};
-
-module.exports.configuration = {
-    description: '针对 Vue Cli 适配器',
+    return chainConfig(api, vueConfig, config);
 };

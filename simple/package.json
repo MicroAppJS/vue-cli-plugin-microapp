@@ -1,0 +1,19 @@
+{
+    "name": "simple",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "vue-cli-service": "vue-cli-service",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@micro-app/vue-cli-plugin-microapp": "file:../",
+        "vue": "^2.6.11"
+    },
+    "devDependencies": {
+        "@vue/cli-service": "^4.2.3"
+    }
+}

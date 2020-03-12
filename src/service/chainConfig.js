@@ -5,17 +5,16 @@ const { tryRequire } = require('@micro-app/shared-utils');
 module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
     const webpackConfigAlias = webpackConfig.module.alias || {};
 
-    if (options.publicPath) {
-        vueConfig.publicPath = options.publicPath;
-    }
-
-    if (options.outputDir) {
-        vueConfig.outputDir = options.outputDir;
-    }
-
-    if (options.assetsDir) {
-        vueConfig.assetsDir = options.assetsDir;
-    }
+    [
+        'publicPath',
+        'outputDir',
+        'assetsDir',
+    ]
+        .forEach(key => {
+            if (options[key] !== undefined) {
+                vueConfig[key] = options[key];
+            }
+        });
 
     // devServer
     vueConfig.devServer = Object.assign({}, vueConfig.devServer || {}, options.devServer || {});

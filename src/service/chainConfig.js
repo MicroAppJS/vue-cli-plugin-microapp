@@ -1,29 +1,31 @@
 'use strict';
 
-const { tryRequire } = require('@micro-app/shared-utils');
+const { _, tryRequire } = require('@micro-app/shared-utils');
 
 module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
     const webpackConfigAlias = webpackConfig.module.alias || {};
 
-    [
+    [ // string
         'publicPath',
         'outputDir',
         'assetsDir',
     ]
         .forEach(key => {
-            if (options[key] !== undefined) {
+            if (!_.isUndefined(options[key])) {
                 vueConfig[key] = options[key];
             }
         });
 
-    // devServer
-    vueConfig.devServer = Object.assign({}, vueConfig.devServer || {}, options.devServer || {});
-
-    // pages
-    vueConfig.pages = Object.assign({}, vueConfig.pages || {}, options.pages || {});
-
-    // css
-    vueConfig.css = Object.assign({}, vueConfig.css || {}, options.css || {});
+    [ // object
+        'devServer',
+        'pages',
+        'css',
+    ]
+        .forEach(key => {
+            if (!_.isEmpty(options[key]) && !_.isUndefined(options[key])) {
+                vueConfig[key] = Object.assign({}, vueConfig[key] || {}, options[key] || {});
+            }
+        });
 
     api.chainWebpack(webpackChain => {
         const outputDir = api.resolve(options.outputDir);

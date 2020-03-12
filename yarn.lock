@@ -323,10 +323,10 @@
   dependencies:
     sourcemap-codec "^1.4.4"
 
-"@micro-app/cli@^0.3.4":
-  version "0.3.4"
-  resolved "https://registry.npm.taobao.org/@micro-app/cli/download/@micro-app/cli-0.3.4.tgz#4d3e5db945e613f9ddfbb45efc0f73289e84df58"
-  integrity sha1-TT5duUXmE/nd+7Re/A9zKJ6E31g=
+"@micro-app/cli@^0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.5.tgz#a582a13f53951e4e1b1e1356ed8d88dc364c9858"
+  integrity sha512-uqaBX7JtAzuyWLqYbKnhz0uysCnulio1GVJGSWty/clhX4KsPbgjr+w4WexSOfmR/Jjp6Po4j+VZg2zC3eMPPA==
   dependencies:
     "@micro-app/core" "^0.3.10"
     "@zkochan/cmd-shim" "^3.1.0"

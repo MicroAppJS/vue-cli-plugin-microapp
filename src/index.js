@@ -4,7 +4,8 @@ const chainConfig = require('./service/chainConfig');
 
 module.exports = function(api, vueConfig) {
 
-    const { service } = require('@micro-app/cli');
+    const { createService } = require('@micro-app/cli');
+    const service = createService();
 
     const builtIn = Symbol.for('built-in');
 

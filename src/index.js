@@ -22,6 +22,7 @@ module.exports = function(api, vueConfig) {
     });
 
     const config = service.runSync('return-config');
+    const webpackConfig = service.runSync('return-config', { _: [], key: 'config' });
 
-    return chainConfig(api, vueConfig, config);
+    return chainConfig(api, vueConfig, config, webpackConfig);
 };

@@ -2,7 +2,8 @@
 
 const { tryRequire } = require('@micro-app/shared-utils');
 
-module.exports = function chainDefault(api, vueConfig, options) {
+module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
+    const webpackConfigAlias = webpackConfig.module.alias || {};
 
     if (options.publicPath) {
         vueConfig.publicPath = options.publicPath;
@@ -41,14 +42,13 @@ module.exports = function chainDefault(api, vueConfig, options) {
             .merge(nodeModulesPaths)
             .end();
 
-        const alias = options.resolveAlias || {};
+        const alias = Object.assign({}, options.resolveAlias || {}, webpackConfigAlias);
         // alias
         webpackChain.resolve
             .alias
             .merge(alias)
             .end();
 
-        console.warn(vueConfig);
         // const entry = options.entry || {};
         // // entry
         // Object.keys(entry).forEach(key => {

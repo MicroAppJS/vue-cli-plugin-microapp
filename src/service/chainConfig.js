@@ -2,8 +2,9 @@
 
 const { _, tryRequire } = require('@micro-app/shared-utils');
 
+// 以 vue-cli 配置为主
 module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
-    const webpackConfigAlias = webpackConfig.module.alias || {};
+    const webpackConfigAlias = webpackConfig.resolve.alias || {};
 
     [ // string
         'publicPath',

@@ -1,10 +1,11 @@
 'use strict';
 
-const { _, tryRequire } = require('@micro-app/shared-utils');
+const { _, tryRequire, fs } = require('@micro-app/shared-utils');
+const createService = require('../utils/createService');
+const CONSTANTS = require('../constants');
 
 // 以 vue-cli 配置为主
-module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
-    const webpackConfigAlias = webpackConfig.resolve.alias || {};
+module.exports = function chainDefault(api, vueConfig, options) {
 
     [ // string
         'publicPath',
@@ -28,9 +29,8 @@ module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
             }
         });
 
+    // 补充
     api.chainWebpack(webpackChain => {
-        const outputDir = api.resolve(options.outputDir);
-
         const nodeModulesPaths = options.nodeModulesPaths || [];
         webpackChain.resolve
             .set('symlinks', true)
@@ -44,30 +44,55 @@ module.exports = function chainDefault(api, vueConfig, options, webpackConfig) {
             .merge(nodeModulesPaths)
             .end();
 
-        const alias = Object.assign({}, options.resolveAlias || {}, webpackConfigAlias);
+        const alias = Object.assign({}, options.resolveAlias || {});
         // alias
         webpackChain.resolve
             .alias
             .merge(alias)
             .end();
 
-        // const entry = options.entry || {};
-        // // entry
-        // Object.keys(entry).forEach(key => {
-        //     webpackChain.entry(key).merge(entry[key]);
-        // });
-
-        const CopyWebpackPlugin = tryRequire('copy-webpack-plugin');
-        if (CopyWebpackPlugin) {
-            const staticPaths = options.staticPaths || [];
-            // 有的时候找不到原来的 CopyWebpackPlugin，不知道为什么
-            webpackChain.plugin('copyEx').use(CopyWebpackPlugin, [
-                staticPaths.map(staticPath => {
-                    return { from: staticPath, to: outputDir, ignore: [ '.*' ] };
-                }),
-            ]);
+        // copy static
+        const staticPaths = (options.staticPaths || []).filter(item => fs.existsSync(item));
+        if (staticPaths.length) {
+            const CopyWebpackPlugin = tryRequire('copy-webpack-plugin');
+            if (CopyWebpackPlugin) {
+                webpackChain
+                    .plugin('copy')
+                    .use(CopyWebpackPlugin, [ staticPaths.map(publicDir => {
+                        return {
+                            from: publicDir,
+                            toType: 'dir',
+                            ignore: [ '.*' ],
+                        };
+                    }) ]);
+            } else {
+                api.logger.warn('[webpack]', 'Not Found "copy-webpack-plugin"');
+            }
         }
 
         return webpackChain;
+    });
+
+    // webpack 所有配置合入
+    api.chainWebpack(webpackChain => {
+        const service = createService();
+
+        // 注册插件
+        service.registerPlugin({
+            id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
+            [CONSTANTS.builtIn]: true,
+            apply(_api) {
+                _api.registerCommand('return-webpack-chain', {
+                    description: 'return config of webpack-chain.',
+                    usage: 'micro-app return-webpack-chain',
+                }, () => {
+                    _api.createChainWebpackConfigInstance(webpackChain);
+                    return _api.resolveChainableWebpackConfig();
+                });
+            },
+        });
+
+        // 同步扩充 webpack-chain config
+        return service.runSync('return-webpack-chain', { _: [], target: CONSTANTS.skipTarget });
     });
 };

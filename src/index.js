@@ -1,29 +1,28 @@
 'use strict';
 
 const chainConfig = require('./service/chainConfig');
+const createService = require('./utils/createService');
+const CONSTANTS = require('./constants');
 
 module.exports = function(api, vueConfig) {
-
-    const { createService } = require('@micro-app/cli');
     const service = createService();
-
-    const builtIn = Symbol.for('built-in');
-
-    // 注册 webapck 插件
-    service.registerPlugin({
-        id: '@micro-app/plugin-webpack',
-        [builtIn]: true,
-    });
 
     // 注册插件
     service.registerPlugin({
-        id: 'vue-cli:plugin-command-return-config',
-        link: require.resolve('./plugins/return.js'),
-        [builtIn]: true,
+        id: 'vue-cli-plugin:plugin-command-return-config',
+        [CONSTANTS.builtIn]: true,
+        apply(_api) {
+            _api.registerCommand('return-config', {
+                description: 'return config of MicroApp.',
+                usage: 'micro-app return-config',
+            }, () => {
+                return _api.config;
+            });
+        },
     });
 
-    const config = service.runSync('return-config');
-    const webpackConfig = service.runSync('return-config', { _: [], key: 'config' });
+    // 第一次加载所有配置
+    const config = service.runSync('return-config', { _: [], target: CONSTANTS.skipTarget });
 
-    return chainConfig(api, vueConfig, config, webpackConfig);
+    return chainConfig(api, vueConfig, config);
 };

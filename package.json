@@ -38,8 +38,8 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/cli": ">=0.3.6",
-        "@micro-app/plugin-webpack": ">=0.0.6"
+        "@micro-app/cli": ">=0.3.7",
+        "@micro-app/plugin-webpack": ">=0.0.8"
     },
     "devDependencies": {
         "@micro-app/plugin-deploy": "^0.0.6",
@@ -49,7 +49,7 @@
         "webpack": "^4.42.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.6",
-        "@micro-app/plugin-webpack": "^0.0.6"
+        "@micro-app/cli": "^0.3.7",
+        "@micro-app/plugin-webpack": "^0.0.8"
     }
 }

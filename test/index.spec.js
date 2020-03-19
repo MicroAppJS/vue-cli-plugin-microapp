@@ -4,8 +4,19 @@
 
 describe('Vue CLI Plugin', () => {
 
+    const plugin = require('../src');
+
     it('plugin', async () => {
-        const plugin = require('../src');
+        const api = {
+            chainWebpack() {
+
+            },
+        };
+
+        plugin(api, {});
+    });
+
+    it('plugin', async () => {
 
         const api = {
             chainWebpack() {

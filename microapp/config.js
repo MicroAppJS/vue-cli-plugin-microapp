@@ -4,11 +4,11 @@ const config = {
     type: '', // types 类型
 };
 
-if (process.env.NODE_ENV === 'test') {
-    config.plugins = [
-        '@micro-app/plugin-deploy', // test
-    ];
+config.plugins = [
+    '@micro-app/plugin-deploy', // test
+];
 
+if (process.env.NODE_ENV === 'test') {
     Object.assign(config, {
         entry: {
             main: './client/main.js',

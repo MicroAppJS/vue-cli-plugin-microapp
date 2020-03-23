@@ -9,9 +9,21 @@ describe('Vue CLI Plugin', () => {
     it('createService', async () => {
         const service = createService();
 
-        expect(typeof service === 'object').not.toBeUndefined();
+        expect(typeof service === 'object').toBeTruthy();
 
         await service.run('help');
+    });
+
+    it('getConfig', () => {
+        const service = createService();
+
+        // 加载获取所有配置
+        service.initSync();
+        const config = service.config;
+
+        expect(typeof config === 'object').toBeTruthy();
+
+        console.warn('config:', config);
     });
 
 });

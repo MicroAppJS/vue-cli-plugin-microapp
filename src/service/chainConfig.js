@@ -2,7 +2,7 @@
 
 const { _, tryRequire, fs } = require('@micro-app/shared-utils');
 const createService = require('../utils/createService');
-const CONSTANTS = require('../constants');
+const { BUILT_IN } = require('../constants');
 
 // 以 vue-cli 配置为主
 module.exports = function chainDefault(api, vueConfig, options) {
@@ -14,7 +14,9 @@ module.exports = function chainDefault(api, vueConfig, options) {
     ]
         .forEach(key => {
             if (!_.isUndefined(options[key])) {
-                vueConfig[key] = options[key];
+                if (_.isUndefined(vueConfig[key])) { // vueConfig 中是否已经存在配置了
+                    vueConfig[key] = options[key];
+                }
             }
         });
 
@@ -80,8 +82,11 @@ module.exports = function chainDefault(api, vueConfig, options) {
         // 注册插件
         service.registerPlugin({
             id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
-            [CONSTANTS.builtIn]: true,
+            [BUILT_IN]: true,
             apply(_api) {
+                // 修改默认配置
+
+
                 _api.registerCommand('return-webpack-chain', {
                     description: 'return config of webpack-chain.',
                     usage: 'micro-app return-webpack-chain',
@@ -93,6 +98,6 @@ module.exports = function chainDefault(api, vueConfig, options) {
         });
 
         // 同步扩充 webpack-chain config
-        return service.runSync('return-webpack-chain', { _: [], target: CONSTANTS.skipTarget });
+        return service.runSync('return-webpack-chain');
     });
 };

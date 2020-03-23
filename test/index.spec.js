@@ -16,15 +16,4 @@ describe('Vue CLI Plugin', () => {
         plugin(api, {});
     });
 
-    it('plugin', async () => {
-
-        const api = {
-            chainWebpack() {
-
-            },
-        };
-
-        plugin(api, {});
-    });
-
 });

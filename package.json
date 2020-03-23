@@ -37,10 +37,6 @@
         "email": "zyao89@gmail.com"
     },
     "license": "MIT",
-    "peerDependencies": {
-        "@micro-app/cli": ">=0.3.7",
-        "@micro-app/plugin-webpack": ">=0.0.8"
-    },
     "devDependencies": {
         "@micro-app/plugin-deploy": "^0.0.6",
         "@types/jest": "^24.9.1",
@@ -49,7 +45,7 @@
         "webpack": "^4.42.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.7",
-        "@micro-app/plugin-webpack": "^0.0.8"
+        "@micro-app/core": "^0.3.18",
+        "@micro-app/plugin-webpack": "^0.0.11"
     }
 }

@@ -323,6 +323,16 @@
   dependencies:
     sourcemap-codec "^1.4.4"
 
+"@micro-app/cli@^0.3.9":
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.9.tgz#d8560a4b84f2596bdafdc3c4630177e400529731"
+  integrity sha512-1f/PwN+bNL41d+AsqUxrlbh1zHbVFu2SRn/FEIHCfWtOqLHa47XOWF56VK9kw+tA+AJOMEHT1W0COAh1mNAwHA==
+  dependencies:
+    "@micro-app/core" "^0.3.18"
+    "@zkochan/cmd-shim" "^4.3.0"
+    read-cmd-shim "^2.0.0"
+    update-notifier "^4.1.0"
+
 "@micro-app/core@^0.3.18":
   version "0.3.18"
   resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.18.tgz#9ca602e6c9da51ddfe333283de9c8f6642244206"
@@ -980,6 +990,14 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+"@zkochan/cmd-shim@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-4.3.0.tgz#4569222afef8efe6147b2eb934911e88309959f1"
+  integrity sha512-i3eTvq0VnWRb9U2Hj22unmiN5Gg+J776xhrr/fAtuaf5xL+/qf4QIu+6tQgo9Soll489dWF4yJmzXJ8pv8oUiw==
+  dependencies:
+    is-windows "^1.0.2"
+    make-dir "^3.0.0"
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -8032,6 +8050,11 @@ react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.0.tgz?cache=0&sync_timestamp=1583523222586&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha1-DzfDYTw0/ms3zX92Og1ik6sVxSc=
 
+read-cmd-shim@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/read-cmd-shim/-/read-cmd-shim-2.0.0.tgz#4a50a71d6f0965364938e9038476f7eede3928d9"
+  integrity sha512-HJpV9bQpkl6KwjxlJcBoqu9Ba0PQg8TqSNIOrulGt54a0uup0HtevreFHzYzkm0lpnleRdNBzXznKrgxglEHQw==
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
@@ -9679,7 +9702,7 @@ upath@^1.1.1:
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
   integrity sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==
 
-update-notifier@4.1.0:
+update-notifier@4.1.0, update-notifier@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/update-notifier/-/update-notifier-4.1.0.tgz#4866b98c3bc5b5473c020b1250583628f9a328f3"
   integrity sha512-w3doE1qtI0/ZmgeoDoARmI5fjDoT93IfKgEGqm26dGUOh8oNpaSTsGNdYRN/SjOuo10jcJGwkEL3mroKzktkew==

@@ -6,7 +6,7 @@
     "scripts": {
         "prepublishOnly": "npm run test",
         "test": "jest",
-        "release": "node bin/index.js release",
+        "release": "micro-app release",
         "release:alpha": "npm run release -- --preRelease=alpha",
         "release:next": "npm run release -- --preRelease=next",
         "release:minor": "npm run release minor",
@@ -45,7 +45,7 @@
         "webpack": "^4.42.0"
     },
     "dependencies": {
-        "@micro-app/core": "^0.3.18",
+        "@micro-app/cli": "^0.3.9",
         "@micro-app/plugin-webpack": "^0.0.11"
     }
 }

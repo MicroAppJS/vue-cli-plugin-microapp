@@ -42,10 +42,10 @@
         "@types/jest": "^24.9.1",
         "eslint-config-2o3t": "^2.0.1",
         "jest": "^24.9.0",
-        "webpack": "^4.42.0"
+        "webpack": "^4.42.1"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.9",
+        "@micro-app/cli": "^0.3.10",
         "@micro-app/plugin-webpack": "^0.0.11"
     }
 }

@@ -84,9 +84,6 @@ module.exports = function chainDefault(api, vueConfig, options) {
             id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
             [BUILT_IN]: true,
             apply(_api) {
-                // 修改默认配置
-
-
                 _api.registerCommand('return-webpack-chain', {
                     description: 'return config of webpack-chain.',
                     usage: 'micro-app return-webpack-chain',

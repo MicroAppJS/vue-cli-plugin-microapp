@@ -1,3 +1,10 @@
+## [0.0.8](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.7...v0.0.8) (2020-03-25)
+
+
+### Bug Fixes
+
+* fixed hook name ([ac036fb](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/ac036fb834c9eba2628ff89eb3867b6082488bed))
+
 ## [0.0.7](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.6...v0.0.7) (2020-03-25)
 
 

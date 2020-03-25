@@ -13,8 +13,8 @@ module.exports = function(api, vueConfig) {
         [BUILT_IN]: true,
         apply(_api) {
             // 修改默认配置
-            const newVueConfig = _api.applyPluginHooks('modifyCommandHelp', vueConfig);
-            Object.assign(vueConfig, newVueConfig);
+            const newVueConfig = _api.applyPluginHooks('modifyVueConfig', vueConfig);
+            Object.assign(vueConfig, newVueConfig || {});
         },
     });
 

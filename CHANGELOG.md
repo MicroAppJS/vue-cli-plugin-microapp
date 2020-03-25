@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.6...v0.0.7) (2020-03-25)
+
+
+### Features
+
+* add `modifyVueConfig` method ([91e5203](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/91e5203c713f5697b8cd98a76cb408c332a853f8))
+
 ## [0.0.6](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.5...v0.0.6) (2020-03-23)
 
 ## [0.0.5](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.4...v0.0.5) (2020-03-23)

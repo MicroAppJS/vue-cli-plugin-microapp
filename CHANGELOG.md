@@ -1,3 +1,10 @@
+## [0.0.9](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.8...v0.0.9) (2020-03-30)
+
+
+### Features
+
+* 增加对外暴露的方法 ([fe00e16](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/fe00e16e53f0f883210903fa2917fdf38108295d))
+
 ## [0.0.8](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.7...v0.0.8) (2020-03-25)
 
 

@@ -13,8 +13,10 @@ module.exports = function(api, vueConfig) {
         [BUILT_IN]: true,
         apply(_api) {
             // 修改默认配置
-            const newVueConfig = _api.applyPluginHooks('modifyVueConfig', vueConfig);
-            Object.assign(vueConfig, newVueConfig || {});
+            _api.onInitDone(() => {
+                const newVueConfig = _api.applyPluginHooks('modifyVueConfig', vueConfig);
+                Object.assign(vueConfig, newVueConfig || {});
+            });
         },
     });
 
@@ -24,3 +26,6 @@ module.exports = function(api, vueConfig) {
 
     return chainConfig(api, vueConfig, config);
 };
+
+// 外部服务提前注册方法
+module.exports.registerMethod = require('./utils/registerMethod');

@@ -38,14 +38,14 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@micro-app/plugin-deploy": "^0.0.6",
+        "@micro-app/plugin-deploy": "^0.0.7",
         "@types/jest": "^24.9.1",
         "eslint-config-2o3t": "^2.0.1",
         "jest": "^24.9.0",
         "webpack": "^4.42.1"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.10",
+        "@micro-app/cli": "^0.3.11",
         "@micro-app/plugin-webpack": "^0.0.11"
     }
 }

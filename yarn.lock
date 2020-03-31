@@ -323,20 +323,20 @@
   dependencies:
     sourcemap-codec "^1.4.4"
 
-"@micro-app/cli@^0.3.13":
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.13.tgz#0459c31e738795272c3d3d136958b5aa38c9b1f5"
-  integrity sha512-itUAu2OIccz/Cb/LNBfo1et5rEDRJRkd9gqhnhagdN5bbW/YHBdPZebWqtvIsJxvtXnRCzAJLTQwBR6ZnF/fyw==
+"@micro-app/cli@^0.3.15":
+  version "0.3.15"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.15.tgz#3cbcb455675deda5bb8dbcae2f42e6c60d71d87b"
+  integrity sha512-RUvrH5e0KtWZAd2dlR3K5fWmovXLzM01wM9yEm347zwZceeBQgMlSv5GRBTCS5HNjVFsfpsfpVWEWk4E+B3NJA==
   dependencies:
-    "@micro-app/core" "^0.3.22"
+    "@micro-app/core" "^0.3.23"
     "@zkochan/cmd-shim" "^4.3.0"
     read-cmd-shim "^2.0.0"
     update-notifier "^4.1.0"
 
-"@micro-app/core@^0.3.22":
-  version "0.3.22"
-  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.22.tgz#acbe705b363f754da81470cf33c4b92d1f8b5fc6"
-  integrity sha512-Jr/eREz19m34ROb5e8a18MV02uI9mIz0WQStAucaK5Y4pZVh2+uN/IFpd11UudcCvPGAQoT8Z0f7Ov00dgYb4Q==
+"@micro-app/core@^0.3.23":
+  version "0.3.23"
+  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.23.tgz#7e8d425021875ee27d1a2e30170502ff022c70dc"
+  integrity sha512-BBLN2dOCCOJDsmCoCzx73C6M2eHB0K3JeEIFmbQSoY/E8EoTRfWNW+IAmFMm8WgSXOtMsb/4V678lBoLq7fLKA==
   dependencies:
     "@micro-app/shared-utils" "^0.1.17"
     dotenv "^8.2.0"

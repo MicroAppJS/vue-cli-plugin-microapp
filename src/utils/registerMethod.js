@@ -13,6 +13,6 @@ module.exports = function registerMethod(s) {
             description: 'modify vue config.',
         });
     } else {
-        logger.warn(`[${KEY}]`, 'has exists.');
+        logger.error(`[${KEY}]`, 'has exists.');
     }
 };

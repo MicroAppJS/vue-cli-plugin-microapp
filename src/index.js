@@ -5,7 +5,7 @@ const silentService = require('./utils/silentService');
 const { BUILT_IN } = require('./constants');
 
 module.exports = function(api, vueConfig) {
-    if (api.__isMicroAppPluginAPI) { // micro-app plugin
+    if (api.$isMicroAppPluginAPI) { // micro-app plugin
         const registerMethod = require('./utils/registerMethod');
         registerMethod(api);
     } else { // vue-cli plugin

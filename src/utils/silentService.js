@@ -1,9 +1,15 @@
 'use strict';
 
+const { _, logger } = require('@micro-app/shared-utils');
 const { createService } = require('@micro-app/cli');
 const { SKIP_TARGET, BUILT_IN } = require('../constants');
 
-module.exports = function() {
+// 无日志服务
+module.exports = function silentService(cb) {
+    // record
+    const ORIGINAL_LEVEL = logger.level;
+    logger.level = 'error';
+
     const service = createService({ target: SKIP_TARGET });
 
     const WEBPACK_PLUGIN_ID = '@micro-app/plugin-webpack';
@@ -15,5 +21,9 @@ module.exports = function() {
         });
     }
 
-    return service;
+    const result = _.isFunction(cb) && cb(service);
+
+    // recovery
+    logger.level = ORIGINAL_LEVEL;
+    return result;
 };

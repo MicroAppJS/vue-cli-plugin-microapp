@@ -323,22 +323,22 @@
   dependencies:
     sourcemap-codec "^1.4.4"
 
-"@micro-app/cli@^0.3.12":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.12.tgz#6fde028d5aa0a66d6a84009ca80c922b61882f7f"
-  integrity sha512-VR6m+abGKpsWwlVfbGqSG/gKD6xxSL9yRuNKvhYorIdIBOCaYb7ksNiq/9YFeLGVxlaKeBXl0fpSAGRIoD9DiA==
+"@micro-app/cli@^0.3.13":
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.13.tgz#0459c31e738795272c3d3d136958b5aa38c9b1f5"
+  integrity sha512-itUAu2OIccz/Cb/LNBfo1et5rEDRJRkd9gqhnhagdN5bbW/YHBdPZebWqtvIsJxvtXnRCzAJLTQwBR6ZnF/fyw==
   dependencies:
-    "@micro-app/core" "^0.3.21"
+    "@micro-app/core" "^0.3.22"
     "@zkochan/cmd-shim" "^4.3.0"
     read-cmd-shim "^2.0.0"
     update-notifier "^4.1.0"
 
-"@micro-app/core@^0.3.21":
-  version "0.3.21"
-  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.21.tgz#43315fa1713580d7500900f5ef90e183b9455b56"
-  integrity sha512-k7KOtQ6pxJbRAaMW8xF3jmuJxOQXjHXLCHtLNayU3ma1SNxOTGBbGbF7VyOBoo7V1sGlC40UjMaMJiqfvdE5lw==
+"@micro-app/core@^0.3.22":
+  version "0.3.22"
+  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.22.tgz#acbe705b363f754da81470cf33c4b92d1f8b5fc6"
+  integrity sha512-Jr/eREz19m34ROb5e8a18MV02uI9mIz0WQStAucaK5Y4pZVh2+uN/IFpd11UudcCvPGAQoT8Z0f7Ov00dgYb4Q==
   dependencies:
-    "@micro-app/shared-utils" "^0.1.16"
+    "@micro-app/shared-utils" "^0.1.17"
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
@@ -387,6 +387,46 @@
   version "0.1.16"
   resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.16.tgz#4952238c8caf17156548e33a43990ef42368e363"
   integrity sha512-n4/E5gRFAijnMa33slUBF+REKVoPZ3SczY3xim3cRT0xI0vqG1uhyLZjEAwUq9mStGORgcllYN4ygUuJx0ki0Q==
+  dependencies:
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+    assert "^2.0.0"
+    chalk "^3.0.0"
+    cheerio "^1.0.0-rc.3"
+    debug "^4.1.1"
+    dedent "^0.7.0"
+    execa "^3.4.0"
+    fs-extra "^8.1.0"
+    git-url-parse "^11.1.2"
+    glob-parent "^5.1.0"
+    globby "^10.0.2"
+    hash-sum "^2.0.0"
+    import-fresh "^3.2.1"
+    inquirer "^7.1.0"
+    is-glob "^4.0.1"
+    lodash "^4.17.15"
+    lru-cache "^5.1.1"
+    multimatch "^4.0.0"
+    npm-package-arg "^6.1.1"
+    npmlog "^4.1.2"
+    open "^7.0.3"
+    ora "^3.4.0"
+    parse-json "^5.0.0"
+    semver "^6.3.0"
+    semver-regex "^3.1.1"
+    shelljs "^0.8.3"
+    signal-exit "^3.0.2"
+    stream-to-string "^1.2.0"
+    stringify-object "^3.3.0"
+    try-require "^1.2.1"
+    yaml "^1.8.2"
+    yargs-parser "^18.1.1"
+    yargs-unparser "^1.5.0"
+
+"@micro-app/shared-utils@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.17.tgz#e99b9aa4385cf4eefe5f96f0f553162ab9342743"
+  integrity sha512-XI1uFnvjPaFZvLLMoARZeUqUya2i2z4aJ1oT23bahQL+5dHgXj2p1o/1agJ7G0K1KStasLRjPXNuHEpBpK1Weg==
   dependencies:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"

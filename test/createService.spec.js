@@ -4,22 +4,25 @@
 
 describe('Vue CLI Plugin', () => {
 
-    const createService = require('../src/utils/createService');
+    const silentService = require('../src/utils/silentService');
 
-    it('createService', async () => {
-        const service = createService();
+    it('silentService', async () => {
+        const result = await silentService(async service => {
+            expect(typeof service === 'object').toBeTruthy();
 
-        expect(typeof service === 'object').toBeTruthy();
+            await service.run('help');
 
-        await service.run('help');
+            return true;
+        });
+        expect(result).toBeTruthy();
     });
 
     it('getConfig', () => {
-        const service = createService();
-
+        const config = silentService(service => {
         // 加载获取所有配置
-        service.initSync();
-        const config = service.config;
+            service.initSync();
+            return service.config;
+        });
 
         expect(typeof config === 'object').toBeTruthy();
 

@@ -45,7 +45,7 @@
         "webpack": "^4.42.1"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.3.11",
+        "@micro-app/cli": "^0.3.12",
         "@micro-app/plugin-webpack": "^0.0.11"
     }
 }

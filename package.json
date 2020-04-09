@@ -38,7 +38,7 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/core": "^0.3.24"
+        "@micro-app/core": "^0.3.25"
     },
     "devDependencies": {
         "@micro-app/plugin-deploy": "^0.0.7",

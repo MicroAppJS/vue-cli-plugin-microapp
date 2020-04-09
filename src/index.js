@@ -1,41 +1,38 @@
 'use strict';
 
 const chainConfig = require('./service/chainConfig');
-const silentService = require('./utils/silentService');
-const { BUILT_IN } = require('./constants');
+const service = require('./utils/createService');
 
+let IPLUGIN_ID;
 module.exports = function(api, vueConfig) {
     if (api.$isMicroAppPluginAPI) { // micro-app plugin
         const registerMethod = require('./utils/registerMethod');
         registerMethod(api);
-        // 重写
-        api.extendMethod('resolveWebpackConfig', {
+        IPLUGIN_ID = api.id;
+    } else { // vue-cli plugin
+        const plugin = IPLUGIN_ID ? service.findPlugin(IPLUGIN_ID) : service.plugins[0]; // 随便取个plugin
+        const _mapi = plugin[Symbol.for('api')];
+
+        // 重写 resolveWebpackConfig
+        _mapi.extendMethod('resolveWebpackConfig', {
             description: 'resolve webpack config.',
             override: true,
         }, webpackConfig => {
-            const finalWebpackConfig = api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
-            api.setState('webpackConfig', finalWebpackConfig);
+            const finalWebpackConfig = _mapi.applyPluginHooks('modifyWebpackConfig', webpackConfig);
+            _mapi.setState('webpackConfig', finalWebpackConfig);
             return finalWebpackConfig;
         });
-    } else { // vue-cli plugin
-        silentService(service => {
-            // 注册插件
-            service.registerPlugin({
-                id: 'vue-cli-plugin:plugin-modifyVueConfig-apply',
-                [BUILT_IN]: true,
-                apply(_api) {
-                    // 修改默认配置
-                    _api.onInitDone(() => {
-                        const newVueConfig = _api.applyPluginHooks('modifyVueConfig', vueConfig);
-                        Object.assign(vueConfig, newVueConfig || {});
 
-                        return chainConfig(api, vueConfig, _api);
-                    });
-                },
-            });
+        // 修改默认配置
+        const newVueConfig = _mapi.applyPluginHooks('modifyVueConfig', vueConfig);
+        Object.assign(vueConfig, newVueConfig || {});
 
-            // 加载获取所有配置
-            return service.initSync();
-        });
+        chainConfig(api, vueConfig, _mapi);
+
+        // 覆盖逻辑
+        const originaFn = api.resolveWebpackConfig;
+        api.resolveWebpackConfig = function(chainableConfig) {
+            return _mapi.resolveWebpackConfig(originaFn.apply(api, chainableConfig));
+        };
     }
 };

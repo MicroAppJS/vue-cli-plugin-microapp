@@ -74,16 +74,11 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
             }
         }
 
-        return _mapi.resolveChainableWebpackConfig(webpackChain);
+        return webpackChain;
     });
 
     // webpack 所有配置合入
-    const _service = api.service;
-    // 覆盖逻辑
-    if (_service) {
-        const originaFn = _service.resolveWebpackConfig;
-        _service.resolveWebpackConfig = function(chainableConfig) {
-            return _mapi.resolveWebpackConfig(originaFn.apply(_service, chainableConfig));
-        };
-    }
+    api.chainWebpack(webpackChain => {
+        return _mapi.resolveChainableWebpackConfig(webpackChain);
+    });
 };

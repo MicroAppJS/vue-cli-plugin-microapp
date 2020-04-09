@@ -1,11 +1,10 @@
 'use strict';
 
 const { _, tryRequire, fs, logger } = require('@micro-app/shared-utils');
-const silentService = require('../utils/silentService');
-const { BUILT_IN } = require('../constants');
 
 // 以 vue-cli 配置为主
-module.exports = function chainDefault(api, vueConfig, options) {
+module.exports = function chainDefault(api, vueConfig, _mapi) {
+    const options = _mapi.config || {};
 
     [ // string
         'publicPath',
@@ -30,6 +29,9 @@ module.exports = function chainDefault(api, vueConfig, options) {
                 vueConfig[key] = Object.assign({}, vueConfig[key] || {}, options[key] || {});
             }
         });
+
+    // global save vueConfig
+    _mapi.setState('vueConfig', vueConfig);
 
     // 补充
     api.chainWebpack(webpackChain => {
@@ -72,44 +74,14 @@ module.exports = function chainDefault(api, vueConfig, options) {
             }
         }
 
-        return webpackChain;
+        return _mapi.resolveChainableWebpackConfig(webpackChain);
     });
 
-    let isOnce = false;
     // webpack 所有配置合入
-    api.chainWebpack(webpackChain => {
-        return silentService(service => {
-            // 注册插件
-            service.registerPlugin({
-                id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
-                [BUILT_IN]: true,
-                apply(_api) {
-                    _api.registerCommand('return-webpack-chain', {
-                        description: 'return config of webpack-chain.',
-                        usage: 'micro-app return-webpack-chain',
-                    }, () => {
-                        // global save vueConfig
-                        _api.setState('vueConfig', vueConfig);
-                        _api.resolveChainableWebpackConfig(webpackChain);
-
-                        if (!isOnce) {
-                            isOnce = true;
-                            const _service = api.service;
-                            // 覆盖逻辑
-                            const originaFn = _service.resolveWebpackConfig;
-                            _service.resolveWebpackConfig = function(chainableConfig) {
-                                const webpackConfig = originaFn.apply(_service, chainableConfig);
-                                const finalWebpackConfig = _api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
-                                _api.setState('webpackConfig', finalWebpackConfig);
-                                return finalWebpackConfig;
-                            };
-                        }
-                    });
-                },
-            });
-
-            // 同步扩充 webpack-chain config
-            return service.runSync('return-webpack-chain');
-        });
-    });
+    const _service = api.service;
+    // 覆盖逻辑
+    const originaFn = _service.resolveWebpackConfig;
+    _service.resolveWebpackConfig = function(chainableConfig) {
+        return _mapi.resolveWebpackConfig(originaFn.apply(_service, chainableConfig));
+    };
 };

@@ -11,7 +11,7 @@ registerWebpackPlugin($s);
 module.exports = function silentService(cb) {
     // record
     const ORIGINAL_LEVEL = logger.level;
-    logger.level = 'error';
+    logger.level = 'silent';
 
     const service = createService({ target: SKIP_TARGET });
     registerWebpackPlugin(service);

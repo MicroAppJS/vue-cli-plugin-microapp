@@ -8,8 +8,17 @@ module.exports = function(api, vueConfig) {
     if (api.$isMicroAppPluginAPI) { // micro-app plugin
         const registerMethod = require('./utils/registerMethod');
         registerMethod(api);
+        // 重写
+        api.extendMethod('resolveWebpackConfig', {
+            description: 'resolve webpack config.',
+            override: true,
+        }, webpackConfig => {
+            const finalWebpackConfig = api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
+            api.setState('webpackConfig', finalWebpackConfig);
+            return finalWebpackConfig;
+        });
     } else { // vue-cli plugin
-        const config = silentService(service => {
+        silentService(service => {
             // 注册插件
             service.registerPlugin({
                 id: 'vue-cli-plugin:plugin-modifyVueConfig-apply',
@@ -19,15 +28,14 @@ module.exports = function(api, vueConfig) {
                     _api.onInitDone(() => {
                         const newVueConfig = _api.applyPluginHooks('modifyVueConfig', vueConfig);
                         Object.assign(vueConfig, newVueConfig || {});
+
+                        return chainConfig(api, vueConfig, _api);
                     });
                 },
             });
 
             // 加载获取所有配置
-            service.initSync();
-            return service.config;
+            return service.initSync();
         });
-
-        return chainConfig(api, vueConfig, config);
     }
 };

@@ -75,35 +75,40 @@ module.exports = function chainDefault(api, vueConfig, options) {
         return webpackChain;
     });
 
+    let isOnce = false;
     // webpack 所有配置合入
-    return silentService(service => {
-    // 注册插件
-        service.registerPlugin({
-            id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
-            [BUILT_IN]: true,
-            apply(_api) {
-                _api.registerCommand('return-webpack-chain', {
-                    description: 'return config of webpack-chain.',
-                    usage: 'micro-app return-webpack-chain',
-                }, () => {
-                    // global save vueConfig
-                    _api.setState('vueConfig', vueConfig);
-                    // 覆盖逻辑
-                    if (api.resolveWebpackConfig) {
-                        const originaFn = api.resolveWebpackConfig;
-                        api.resolveWebpackConfig = function(chainableConfig) {
-                            const finalWebpackChainConfig = api.resolveChainableWebpackConfig(chainableConfig);
-                            const webpackConfig = originaFn(finalWebpackChainConfig);
-                            const finalWebpackConfig = api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
-                            api.setState('webpackConfig', finalWebpackConfig);
-                            return finalWebpackConfig;
-                        };
-                    }
-                });
-            },
-        });
+    api.chainWebpack(webpackChain => {
+        return silentService(service => {
+            // 注册插件
+            service.registerPlugin({
+                id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
+                [BUILT_IN]: true,
+                apply(_api) {
+                    _api.registerCommand('return-webpack-chain', {
+                        description: 'return config of webpack-chain.',
+                        usage: 'micro-app return-webpack-chain',
+                    }, () => {
+                        // global save vueConfig
+                        _api.setState('vueConfig', vueConfig);
+                        _api.resolveChainableWebpackConfig(webpackChain);
 
-        // 同步扩充 webpack-chain config
-        return service.runSync('return-webpack-chain');
+                        if (!isOnce) {
+                            isOnce = true;
+                            // 覆盖逻辑
+                            const originaFn = api.service.resolveWebpackConfig;
+                            api.service.resolveWebpackConfig = function(chainableConfig) {
+                                const webpackConfig = originaFn.apply(api.service, chainableConfig);
+                                const finalWebpackConfig = _api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
+                                _api.setState('webpackConfig', finalWebpackConfig);
+                                return finalWebpackConfig;
+                            };
+                        }
+                    });
+                },
+            });
+
+            // 同步扩充 webpack-chain config
+            return service.runSync('return-webpack-chain');
+        });
     });
 };

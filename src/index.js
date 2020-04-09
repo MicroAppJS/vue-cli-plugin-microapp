@@ -13,6 +13,11 @@ module.exports = function(api, vueConfig) {
         const plugin = IPLUGIN_ID ? service.findPlugin(IPLUGIN_ID) : service.plugins[0]; // 随便取个plugin
         const _mapi = plugin[Symbol.for('api')];
 
+        if (!_mapi) {
+            const { logger } = require('@micro-app/shared-utils');
+            return logger.error('[Vue-CLI-Plugin]', 'Not Found "api"!');
+        }
+
         // 重写 resolveWebpackConfig
         _mapi.extendMethod('resolveWebpackConfig', {
             description: 'resolve webpack config.',

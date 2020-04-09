@@ -8,10 +8,15 @@ describe('Vue CLI Plugin', () => {
 
     it('plugin', async () => {
         const api = {
+            service: {
+                plugins: [],
+            },
             chainWebpack() {
 
             },
-            service: {},
+            extendMethod() {
+
+            },
         };
 
         plugin(api, {});

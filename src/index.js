@@ -35,9 +35,12 @@ module.exports = function(api, vueConfig) {
         chainConfig(api, vueConfig, _mapi);
 
         // 覆盖逻辑
-        const originaFn = api.resolveWebpackConfig;
-        api.resolveWebpackConfig = function(chainableConfig) {
-            return _mapi.resolveWebpackConfig(originaFn.apply(api, chainableConfig));
-        };
+        const _service = api.service;
+        if (_service) {
+            const originaFn = _service.resolveWebpackConfig;
+            _service.resolveWebpackConfig = function(chainableConfig) {
+                return _mapi.resolveWebpackConfig(originaFn.call(_service, chainableConfig));
+            };
+        }
     }
 };

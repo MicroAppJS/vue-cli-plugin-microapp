@@ -1,3 +1,10 @@
+## [0.0.12](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.11...v0.0.12) (2020-04-09)
+
+
+### Bug Fixes
+
+* refactoring code ([4463b59](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/4463b590c6e39ee305c14d2faaf71e53aaba85d9))
+
 ## [0.0.11](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.10...v0.0.11) (2020-03-31)
 
 ## [0.0.10](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.9...v0.0.10) (2020-03-31)

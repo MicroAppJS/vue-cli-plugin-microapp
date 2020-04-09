@@ -11,6 +11,7 @@ describe('Vue CLI Plugin', () => {
             chainWebpack() {
 
             },
+            service: {},
         };
 
         plugin(api, {});

@@ -80,8 +80,10 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
     // webpack 所有配置合入
     const _service = api.service;
     // 覆盖逻辑
-    const originaFn = _service.resolveWebpackConfig;
-    _service.resolveWebpackConfig = function(chainableConfig) {
-        return _mapi.resolveWebpackConfig(originaFn.apply(_service, chainableConfig));
-    };
+    if (_service) {
+        const originaFn = _service.resolveWebpackConfig;
+        _service.resolveWebpackConfig = function(chainableConfig) {
+            return _mapi.resolveWebpackConfig(originaFn.apply(_service, chainableConfig));
+        };
+    }
 };

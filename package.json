@@ -37,6 +37,9 @@
         "email": "zyao89@gmail.com"
     },
     "license": "MIT",
+    "peerDependencies": {
+        "@micro-app/core": "^0.3.24"
+    },
     "devDependencies": {
         "@micro-app/plugin-deploy": "^0.0.7",
         "@types/jest": "^24.9.1",

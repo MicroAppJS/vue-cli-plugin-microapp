@@ -94,10 +94,11 @@ module.exports = function chainDefault(api, vueConfig, options) {
 
                         if (!isOnce) {
                             isOnce = true;
+                            const _service = api.service;
                             // 覆盖逻辑
-                            const originaFn = api.service.resolveWebpackConfig;
-                            api.service.resolveWebpackConfig = function(chainableConfig) {
-                                const webpackConfig = originaFn.apply(api.service, chainableConfig);
+                            const originaFn = _service.resolveWebpackConfig;
+                            _service.resolveWebpackConfig = function(chainableConfig) {
+                                const webpackConfig = originaFn.apply(_service, chainableConfig);
                                 const finalWebpackConfig = _api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
                                 _api.setState('webpackConfig', finalWebpackConfig);
                                 return finalWebpackConfig;

@@ -350,14 +350,14 @@
     "@release-it/conventional-changelog" "^1.1.0"
     release-it "^13.1.1"
 
-"@micro-app/plugin-webpack@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-webpack/-/plugin-webpack-0.0.11.tgz#998664f039472ed0daa47e9451d5a12478405b4b"
-  integrity sha512-+Ku8V2UJUpAbAfwXgEse1dhcKxH+ybByFOeLL9KivNxKelxEmYI01XFY7V6wXKiSlDfgxl/IUoZXH35VrBxcsg==
+"@micro-app/plugin-webpack@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-webpack/-/plugin-webpack-0.0.12.tgz#bbc646350badc54afe13b878322c1c4063416efe"
+  integrity sha512-V7UD8p4ETxrEBzzx2LjypgTqdiu1UQs74ZDaTmn7hF5S/7qAfd15GOTptgwqXBkC6GVOOf3nSGSdpw04rkCOWQ==
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.6"
     "@marshallofsound/webpack-asset-relocator-loader" "^0.5.0"
-    "@micro-app/shared-utils" "^0.1.16"
+    "@micro-app/shared-utils" "^0.1.17"
     "@soda/friendly-errors-webpack-plugin" "^1.7.1"
     address "^1.1.2"
     autoprefixer "^9.7.4"
@@ -382,46 +382,6 @@
     webpack "^4"
     webpack-chain "^6.4.0"
     webpack-dev-server "^3"
-
-"@micro-app/shared-utils@^0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.16.tgz#4952238c8caf17156548e33a43990ef42368e363"
-  integrity sha512-n4/E5gRFAijnMa33slUBF+REKVoPZ3SczY3xim3cRT0xI0vqG1uhyLZjEAwUq9mStGORgcllYN4ygUuJx0ki0Q==
-  dependencies:
-    ajv "^6.10.2"
-    ajv-keywords "^3.4.1"
-    assert "^2.0.0"
-    chalk "^3.0.0"
-    cheerio "^1.0.0-rc.3"
-    debug "^4.1.1"
-    dedent "^0.7.0"
-    execa "^3.4.0"
-    fs-extra "^8.1.0"
-    git-url-parse "^11.1.2"
-    glob-parent "^5.1.0"
-    globby "^10.0.2"
-    hash-sum "^2.0.0"
-    import-fresh "^3.2.1"
-    inquirer "^7.1.0"
-    is-glob "^4.0.1"
-    lodash "^4.17.15"
-    lru-cache "^5.1.1"
-    multimatch "^4.0.0"
-    npm-package-arg "^6.1.1"
-    npmlog "^4.1.2"
-    open "^7.0.3"
-    ora "^3.4.0"
-    parse-json "^5.0.0"
-    semver "^6.3.0"
-    semver-regex "^3.1.1"
-    shelljs "^0.8.3"
-    signal-exit "^3.0.2"
-    stream-to-string "^1.2.0"
-    stringify-object "^3.3.0"
-    try-require "^1.2.1"
-    yaml "^1.8.2"
-    yargs-parser "^18.1.1"
-    yargs-unparser "^1.5.0"
 
 "@micro-app/shared-utils@^0.1.17":
   version "0.1.17"

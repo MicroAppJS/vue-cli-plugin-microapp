@@ -76,25 +76,34 @@ module.exports = function chainDefault(api, vueConfig, options) {
     });
 
     // webpack 所有配置合入
-    api.chainWebpack(webpackChain => {
-        return silentService(service => {
-        // 注册插件
-            service.registerPlugin({
-                id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
-                [BUILT_IN]: true,
-                apply(_api) {
-                    _api.registerCommand('return-webpack-chain', {
-                        description: 'return config of webpack-chain.',
-                        usage: 'micro-app return-webpack-chain',
-                    }, () => {
-                        _api.createChainWebpackConfigInstance(webpackChain);
-                        return _api.resolveChainableWebpackConfig();
-                    });
-                },
-            });
-
-            // 同步扩充 webpack-chain config
-            return service.runSync('return-webpack-chain');
+    return silentService(service => {
+    // 注册插件
+        service.registerPlugin({
+            id: 'vue-cli-plugin:plugin-command-return-webpack-chain',
+            [BUILT_IN]: true,
+            apply(_api) {
+                _api.registerCommand('return-webpack-chain', {
+                    description: 'return config of webpack-chain.',
+                    usage: 'micro-app return-webpack-chain',
+                }, () => {
+                    // global save vueConfig
+                    _api.setState('vueConfig', vueConfig);
+                    // 覆盖逻辑
+                    if (api.resolveWebpackConfig) {
+                        const originaFn = api.resolveWebpackConfig;
+                        api.resolveWebpackConfig = function(chainableConfig) {
+                            const finalWebpackChainConfig = api.resolveChainableWebpackConfig(chainableConfig);
+                            const webpackConfig = originaFn(finalWebpackChainConfig);
+                            const finalWebpackConfig = api.applyPluginHooks('modifyWebpackConfig', webpackConfig);
+                            api.setState('webpackConfig', finalWebpackConfig);
+                            return finalWebpackConfig;
+                        };
+                    }
+                });
+            },
         });
+
+        // 同步扩充 webpack-chain config
+        return service.runSync('return-webpack-chain');
     });
 };

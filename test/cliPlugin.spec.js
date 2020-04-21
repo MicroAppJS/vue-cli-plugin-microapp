@@ -6,7 +6,7 @@ describe('Vue CLI Plugin', () => {
 
     const plugin = require('../src');
 
-    it('plugin', async () => {
+    it('plugin', () => {
         const api = {
             service: {
                 plugins: [],

@@ -6,8 +6,6 @@ const service = require('./utils/createService');
 let IPLUGIN_ID;
 module.exports = function(api, vueConfig) {
     if (api.$isMicroAppPluginAPI) { // micro-app plugin
-        const registerMethod = require('./utils/registerMethod');
-        registerMethod(api);
         IPLUGIN_ID = api.id;
     } else { // vue-cli plugin
         const plugin = IPLUGIN_ID ? service.findPlugin(IPLUGIN_ID) : service.plugins[0]; // 随便取个plugin
@@ -43,4 +41,12 @@ module.exports = function(api, vueConfig) {
             };
         }
     }
+};
+
+// 注册
+module.exports.registerMethod = {
+    modifyVueConfig: {
+        type: 'MODIFY',
+        description: 'modify vue config.',
+    },
 };

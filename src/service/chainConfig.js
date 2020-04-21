@@ -60,11 +60,13 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
         if (staticPaths.length) {
             const CopyWebpackPlugin = tryRequire('copy-webpack-plugin');
             if (CopyWebpackPlugin) {
+                const outputDir = webpackChain.output.get('path');
                 webpackChain
-                    .plugin('copy')
+                    .plugin('copyEx')
                     .use(CopyWebpackPlugin, [ staticPaths.map(publicDir => {
                         return {
                             from: publicDir,
+                            to: outputDir,
                             toType: 'dir',
                             ignore: [ '.*' ],
                         };
@@ -79,6 +81,6 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
 
     // webpack 所有配置合入
     api.chainWebpack(webpackChain => {
-        return _mapi.resolveChainableWebpackConfig(webpackChain);
+        return _mapi.resolveWebpackChain(webpackChain);
     });
 };

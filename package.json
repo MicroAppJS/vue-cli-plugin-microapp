@@ -49,6 +49,6 @@
     },
     "dependencies": {
         "@micro-app/cli": "^0.3.17",
-        "@micro-app/plugin-webpack": "^0.0.13"
+        "@micro-app/plugin-webpack": "^0.0.15"
     }
 }

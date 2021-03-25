@@ -6,6 +6,10 @@ const { _, tryRequire, fs, logger } = require('@micro-app/shared-utils');
 module.exports = function chainDefault(api, vueConfig, _mapi) {
     const options = _mapi.config || {};
 
+    if (_.isUndefined(vueConfig.filenameHashing)) {
+        vueConfig.filenameHashing = true;
+    }
+
     [ // string
         'publicPath',
         'outputDir',

@@ -955,10 +955,10 @@
     "@release-it/conventional-changelog" "^2.0.1"
     release-it "^14.4.1"
 
-"@micro-app/plugin-webpack@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-webpack/-/plugin-webpack-0.0.15.tgz#be27172a1ae54fbd6564df07bc9a8a4daf7f8513"
-  integrity sha512-v01fg0Ru79Oh4eDWSgbutFG5cM4DlJXsPhQ1viQVzk0i0ORe3BBXBpyC/mAxL6hmukpnXpuw7aIZx8I84b2giQ==
+"@micro-app/plugin-webpack@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-webpack/-/plugin-webpack-0.0.16.tgz#992618cc70a6699bd5670341d39fbe05b6cc3e44"
+  integrity sha512-mwlG0pKJdiM2E+lmqCK3UMQfR7yT92pbSQz7Sb7q7yOoI/mTak1qVbtl9tZT385a6kJkdLQwTUH7G5ahitQJSA==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/preset-env" "^7.9.5"

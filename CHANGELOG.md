@@ -1,3 +1,5 @@
+## [0.1.2](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.1...v0.1.2) (2021-03-26)
+
 ## [0.1.1](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.0...v0.1.1) (2021-03-25)
 
 # [0.1.0](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.0.19...v0.1.0) (2021-03-24)

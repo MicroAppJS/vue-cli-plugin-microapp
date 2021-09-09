@@ -26,11 +26,12 @@ module.exports = function(api, vueConfig) {
             return finalWebpackConfig;
         });
 
+        // 修改补充一些默认值
+        chainConfig(api, vueConfig, _mapi);
+
         // 修改默认配置
         const newVueConfig = _mapi.applyPluginHooks('modifyVueConfig', vueConfig);
         Object.assign(vueConfig, newVueConfig || {});
-
-        chainConfig(api, vueConfig, _mapi);
 
         // 覆盖逻辑
         const _service = api.service;

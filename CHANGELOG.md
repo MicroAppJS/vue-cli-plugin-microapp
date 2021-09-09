@@ -1,3 +1,15 @@
+## [0.1.3](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.2...v0.1.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* 调整配置逻辑顺序 ([0a84a23](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/0a84a237c05317eace6dea9e627eed5a29de4a36))
+
+
+### Features
+
+* 更新依赖 ([9c91b0b](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/9c91b0be0ee75c5fa83faf28da41380d62eebca4))
+
 ## [0.1.2](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.1...v0.1.2) (2021-03-26)
 
 ## [0.1.1](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.0...v0.1.1) (2021-03-25)

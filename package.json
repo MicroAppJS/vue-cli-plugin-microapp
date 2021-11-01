@@ -38,17 +38,17 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@micro-app/core": "^0.4.1"
+        "@micro-app/core": "^0.4.3"
     },
     "devDependencies": {
-        "@micro-app/plugin-deploy": "^0.0.8",
+        "@micro-app/plugin-deploy": "^0.0.9",
         "@types/jest": "^24.9.1",
-        "eslint-config-2o3t": "^2.0.1",
+        "eslint-config-2o3t": "^2.0.2",
         "jest": "^24.9.0",
         "webpack": "^4.46.0"
     },
     "dependencies": {
-        "@micro-app/cli": "^0.4.1",
-        "@micro-app/plugin-webpack": "^0.0.18"
+        "@micro-app/cli": "^0.4.2",
+        "@micro-app/plugin-webpack": "^0.0.19"
     }
 }

@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.4...v0.2.1) (2021-12-20)
+
+
+### Features
+
+* 不兼容性配置修改，以 micro-app.config 为主配置源 ([6a590cc](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/6a590cc4f460d62ce068b35b2a7083c656c743b6))
+
 ## [0.1.4](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.3...v0.1.4) (2021-11-01)
 
 ## [0.1.3](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.2...v0.1.3) (2021-09-09)

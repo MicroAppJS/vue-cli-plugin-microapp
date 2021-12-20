@@ -16,10 +16,8 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
         'assetsDir',
     ]
         .forEach(key => {
-            if (!_.isUndefined(options[key])) {
-                if (_.isUndefined(vueConfig[key])) { // vueConfig 中是否已经存在配置了
-                    vueConfig[key] = options[key];
-                }
+            if (!_.isUndefined(options[key])) { // 不兼容性修改
+                vueConfig[key] = options[key];
             }
         });
 

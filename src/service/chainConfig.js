@@ -18,6 +18,7 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
         .forEach(key => {
             if (!_.isUndefined(options[key])) { // 不兼容性修改
                 vueConfig[key] = options[key];
+                delete options[key]; // 交接所有能力
             }
         });
 
@@ -29,6 +30,7 @@ module.exports = function chainDefault(api, vueConfig, _mapi) {
         .forEach(key => {
             if (!_.isEmpty(options[key]) && !_.isUndefined(options[key])) {
                 vueConfig[key] = Object.assign({}, vueConfig[key] || {}, options[key] || {});
+                delete options[key]; // 交接所有能力
             }
         });
 

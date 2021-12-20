@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.1...v0.2.2) (2021-12-20)
+
+
+### Bug Fixes
+
+* 修复逻辑，防止重复配置 ([77df53c](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/77df53c84cfb3dfb0832c43e9b050cdb17304831))
+
 ## [0.2.1](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.1.4...v0.2.1) (2021-12-20)
 
 

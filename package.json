@@ -9,8 +9,8 @@
         "release": "micro-app release",
         "release:alpha": "npm run release -- --preRelease=alpha",
         "release:next": "npm run release -- --preRelease=next",
-        "release:minor": "npm run release minor",
-        "release:patch": "npm run release patch"
+        "release:minor": "npm run release -- minor",
+        "release:patch": "npm run release -- patch"
     },
     "files": [
         "src"
@@ -45,10 +45,10 @@
         "@types/jest": "^24.9.1",
         "eslint-config-2o3t": "^2.0.2",
         "jest": "^24.9.0",
-        "webpack": "^4.46.0"
+        "webpack": "^4"
     },
     "dependencies": {
         "@micro-app/cli": "^0.4.2",
-        "@micro-app/plugin-webpack": "^0.0.19"
+        "@micro-app/plugin-webpack": "^0.1.0"
     }
 }

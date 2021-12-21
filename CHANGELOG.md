@@ -1,3 +1,10 @@
+## [0.2.4](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.3...v0.2.4) (2021-12-21)
+
+
+### Bug Fixes
+
+* 修改参数配置逻辑 ([e1c5203](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/e1c52033ee2c501b7f10cadacbf58979a62bbf61))
+
 ## [0.2.3](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.2...v0.2.3) (2021-12-21)
 
 

@@ -1,3 +1,10 @@
+## [0.2.3](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.2...v0.2.3) (2021-12-21)
+
+
+### Features
+
+* 更新相关依赖版本 ([835fa7e](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/835fa7e04305ffad73b50ba885a5c1d9a1886dad))
+
 ## [0.2.2](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.1...v0.2.2) (2021-12-20)
 
 

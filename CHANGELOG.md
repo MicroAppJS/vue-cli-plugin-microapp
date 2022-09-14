@@ -1,3 +1,10 @@
+## [0.2.5](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.4...v0.2.5) (2022-09-14)
+
+
+### Features
+
+* update package ([7514e7b](https://github.com/MicroAppJS/vue-cli-plugin-microapp/commit/7514e7b180d070dc531dc31310cce5889dc02317))
+
 ## [0.2.4](https://github.com/MicroAppJS/vue-cli-plugin-microapp/compare/v0.2.3...v0.2.4) (2021-12-21)
 
 
